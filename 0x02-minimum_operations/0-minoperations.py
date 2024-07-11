@@ -5,11 +5,11 @@ Function that calculates the min operations to copy and paste letters
 
 
 def minOperations(n):
-    nOpe = 0
-    minOpe = 2
+    numberOpe = 0
+    minimumOpe = 2
     while n > 1:
-        while n % minOpe == 0:
-            nOpe += minOpe
-            n /= minOpe
-        minOpe += 1
-    return nOpe
+        while n % minimumOpe == 0:
+            numberOpe += minimumOpe
+            n /= minimumOpe
+        minimumOpe += 1
+    return numberOpe
