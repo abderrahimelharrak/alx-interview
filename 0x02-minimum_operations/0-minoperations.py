@@ -1,20 +1,15 @@
 #!/usr/bin/python3
-
-""" Module for 0-minoperations"""
+"""
+Function that calculates the min operations to copy and paste letters
+"""
 
 
 def minOperations(n):
-    """
-    minOperations
-    Gets fewest # of operations needed to result in exactly n H characters
-    """
-    if (n < 2):
-        return 0
-    y, z = 0, 2
-    while z <= n:
-        if n % z == 0:
-            y += z
-            n = n / z
-            z -= 1
-       z += 1
-    return y
+    nOpe = 0
+    minOpe = 2
+    while n > 1:
+        while n % minOpe == 0:
+            nOpe += minOpe
+            n /= minOpe
+        minOpe += 1
+    return nOpe
