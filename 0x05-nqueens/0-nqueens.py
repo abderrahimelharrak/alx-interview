@@ -37,19 +37,19 @@ def input():
     return n
 
 
-def is_attacking(pos0, pos1):
+def attacking(position0, position1):
     """Checks if the positions of two queens are in an attacking mode.
 
     Args:
-        pos0 (list or tuple): The first queen's position.
-        pos1 (list or tuple): The second queen's position.
+        position0 (list or tuple): The first queen's position.
+        position1 (list or tuple): The second queen's position.
 
     Returns:
         bool: True if the queens are in an attacking position else False.
     """
-    if (pos0[0] == pos1[0]) or (pos0[1] == pos1[1]):
+    if (position0[0] == position1[0]) or (position0[1] == position1[1]):
         return True
-    return abs(pos0[0] - pos1[0]) == abs(pos0[1] - pos1[1])
+    return abs(position0[0] - position1[0]) == abs(position0[1] - position1[1])
 
 
 def group_exists(group):
