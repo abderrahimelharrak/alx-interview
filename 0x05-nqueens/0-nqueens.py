@@ -1,16 +1,21 @@
 #!/usr/bin/python3
-
-"""N queens.
+"""N queens solution finder module.
 """
 import sys
 
 
 solutions = []
+"""The list of possible solutions to the N queens problem.
+"""
 n = 0
+"""The size of the chessboard.
+"""
 pos = None
+"""The list of possible positions on the chessboard.
+"""
 
 
-def input():
+def get_input():
     """Retrieves and validates this program's argument.
 
     Returns:
@@ -32,64 +37,64 @@ def input():
     return n
 
 
-def attacking(position0, position1):
+def is_attacking(pos0, pos1):
     """Checks if the positions of two queens are in an attacking mode.
 
     Args:
-        position0 (list or tuple): The first queen's position.
-        position1 (list or tuple): The second queen's position.
+        pos0 (list or tuple): The first queen's position.
+        pos1 (list or tuple): The second queen's position.
 
     Returns:
         bool: True if the queens are in an attacking position else False.
     """
-    if (position0[0] == position1[0]) or (position0[1] == position1[1]):
+    if (pos0[0] == pos1[0]) or (pos0[1] == pos1[1]):
         return True
-    return abs(position0[0] - position1[0]) == abs(position0[1] - position1[1])
+    return abs(pos0[0] - pos1[0]) == abs(pos0[1] - pos1[1])
 
 
-def group_exists(grp):
+def group_exists(group):
     """Checks if a group exists in the list of solutions.
 
     Args:
-        grp (list of integers): A group of possible positions.
+        group (list of integers): A group of possible positions.
 
     Returns:
         bool: True if it exists, otherwise False.
     """
     global solutions
-    for sitn in solutions:
-        x = 0
-        for stin_pos in stin:
-            for grp_position in grp:
-                if stin_pos[0] == grp_position[0] and stin_pos[1] == grp_position[1]:
-                    x += 1
-        if x == n:
+    for stn in solutions:
+        i = 0
+        for stn_pos in stn:
+            for grp_pos in group:
+                if stn_pos[0] == grp_pos[0] and stn_pos[1] == grp_pos[1]:
+                    i += 1
+        if i == n:
             return True
     return False
 
 
-def bld_solution(w, grp):
+def build_solution(row, group):
     """Builds a solution for the n queens problem.
 
     Args:
-        w (int): The current row in the chessboard.
-        grp (list of lists of integers): The group of valid positions.
+        row (int): The current row in the chessboard.
+        group (list of lists of integers): The group of valid positions.
     """
     global solutions
     global n
-    if w == n:
-        tmp = grp.copy()
-        if not grp_exists(tmp):
-            solutions.append(tmp)
+    if row == n:
+        tmp0 = group.copy()
+        if not group_exists(tmp0):
+            solutions.append(tmp0)
     else:
         for col in range(n):
-            a = (w * n) + col
-            matches = zip(list([pos[a]]) * len(grp), grp)
-            used_positions = map(lambda x: attacking(x[0], x[1]), matches)
-            grp.append(pos[a].copy())
+            a = (row * n) + col
+            matches = zip(list([pos[a]]) * len(group), group)
+            used_positions = map(lambda x: is_attacking(x[0], x[1]), matches)
+            group.append(pos[a].copy())
             if not any(used_positions):
-                bld_solution(row + 1, grp)
-            grp.pop(len(grp) - 1)
+                build_solution(row + 1, group)
+            group.pop(len(group) - 1)
 
 
 def get_solutions():
@@ -99,10 +104,10 @@ def get_solutions():
     pos = list(map(lambda x: [x // n, x % n], range(n ** 2)))
     a = 0
     group = []
-    bld_solution(a, group)
+    build_solution(a, group)
 
 
-n = input()
+n = get_input()
 get_solutions()
 for solution in solutions:
     print(solution)
