@@ -15,7 +15,7 @@ pos = None
 """
 
 
-def get_input():
+def input():
     """Retrieves and validates this program's argument.
 
     Returns:
@@ -107,7 +107,7 @@ def get_solutions():
     build_solution(a, group)
 
 
-n = get_input()
+n = input()
 get_solutions()
 for solution in solutions:
     print(solution)
