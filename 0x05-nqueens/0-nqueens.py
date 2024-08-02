@@ -65,8 +65,8 @@ def grp_exists(grp):
     for stin in solutions:
         x = 0
         for stin_pos in stin:
-            for grp_position in grp:
-                if stin_pos[0] == grp_position[0] and stin_pos[1] == grp_position[1]:
+            for grp_pos in grp:
+                if stin_pos[0] == grp_pos[0] and stin_pos[1] == grp_pos[1]:
                     x += 1
         if x == n:
             return True
