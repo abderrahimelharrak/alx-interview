@@ -52,23 +52,23 @@ def attacking(position0, position1):
     return abs(position0[0] - position1[0]) == abs(position0[1] - position1[1])
 
 
-def group_exists(group):
+def grp_exists(grp):
     """Checks if a group exists in the list of solutions.
 
     Args:
-        group (list of integers): A group of possible positions.
+        grp (list of integers): A group of possible positions.
 
     Returns:
         bool: True if it exists, otherwise False.
     """
     global solutions
-    for stn in solutions:
-        i = 0
-        for stn_pos in stn:
-            for grp_pos in group:
-                if stn_pos[0] == grp_pos[0] and stn_pos[1] == grp_pos[1]:
-                    i += 1
-        if i == n:
+    for stin in solutions:
+        x = 0
+        for stin_pos in stin:
+            for grp_position in grp:
+                if stin_pos[0] == grp_position[0] and stin_pos[1] == grp_position[1]:
+                    x += 1
+        if x == n:
             return True
     return False
 
@@ -84,7 +84,7 @@ def build_solution(row, group):
     global n
     if row == n:
         tmp0 = group.copy()
-        if not group_exists(tmp0):
+        if not grp_exists(tmp0):
             solutions.append(tmp0)
     else:
         for col in range(n):
