@@ -90,7 +90,7 @@ def build_solution(row, group):
         for col in range(n):
             a = (row * n) + col
             matches = zip(list([pos[a]]) * len(group), group)
-            used_positions = map(lambda x: is_attacking(x[0], x[1]), matches)
+            used_positions = map(lambda x: attacking(x[0], x[1]), matches)
             group.append(pos[a].copy())
             if not any(used_positions):
                 build_solution(row + 1, group)
