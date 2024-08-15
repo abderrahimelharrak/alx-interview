@@ -1,4 +1,5 @@
-#!/usr/bin/python3i
+#!/usr/bin/python3
+
 """2D matrix rotation.
 """
 
