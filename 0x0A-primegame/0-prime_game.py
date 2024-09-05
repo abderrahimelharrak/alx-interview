@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""0. Prime Game - Maria and Ben are playing a game"""
+
+"""Maria and Ben are playing a game"""
 
 
 def isWinner(x, nums):
@@ -14,13 +15,13 @@ def isWinner(x, nums):
     ben = 0
     maria = 0
 
-    a = [1 for x in range(sorted(nums)[-1] + 1)]
-    a[0], a[1] = 0, 0
-    for i in range(2, len(a)):
-        rm_multiples(a, i)
+    m = [1 for x in range(sorted(nums)[-1] + 1)]
+    m[0], m[1] = 0, 0
+    for i in range(2, len(m)):
+        rmmultiples(m, i)
 
     for i in nums:
-        if sum(a[0:i + 1]) % 2 == 0:
+        if sum(m[0:i + 1]) % 2 == 0:
             ben += 1
         else:
             maria += 1
@@ -31,12 +32,12 @@ def isWinner(x, nums):
     return None
 
 
-def rm_multiples(ls, x):
+def rmmultiples(y, x):
     """removes multiple
     of primes
     """
-    for i in range(2, len(ls)):
+    for i in range(2, len(y)):
         try:
-            ls[i * x] = 0
+            y[i * x] = 0
         except (ValueError, IndexError):
             break
